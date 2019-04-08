@@ -1,0 +1,9 @@
+getElementById，getElementsByTagName和getElementsByClassName 是JavaScript中常用的获取元素的方法。
+
+
+getElementById 是通过id来获取元素，id在HTML中是唯一的，所以获取到的只有一个元素。
+
+以下两个有多个元素，所以要加s
+   getElementsByTagNam 是通过标签名来获取元素，一种标签在HTML中可以有多个，所以获取到的是多个元素，且返回是以集合的形式返回。
+
+   getElementsByClassName 是通过类名来获取元素，同名的类在HTML中也能存在多个，所以获取到的也是多个元素，同样是以集合的形式反回。

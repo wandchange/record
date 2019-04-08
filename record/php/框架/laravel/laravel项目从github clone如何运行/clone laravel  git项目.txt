@@ -1,0 +1,5 @@
+由于上传后.env会变成.env.example,会导致原有配置加载不了
+
+.env.example改名为.env通过phpstorm改的，windows系统一直提示不能设置空的文件名
+
+然后上传的.env文件并没有app_key 还是要使用方法er...    2019/03/29

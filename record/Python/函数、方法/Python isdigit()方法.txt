@@ -1,0 +1,12 @@
+Python isdigit() 方法检测字符串是否只由数字组成。
+
+
+str = "123456";  # Only digit in this string
+print str.isdigit();
+
+str = "this is string example....wow!!!";
+print str.isdigit();
+以上实例输出结果如下：
+
+True
+False

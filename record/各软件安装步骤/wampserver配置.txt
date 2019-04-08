@@ -1,0 +1,37 @@
+一、安装
+
+二、MySQL以及PhpMyAdmin的配置
+1、修改mysql密码(因为默认安装的空密码不安全)
+   操作：左键点击，选择“phpMyAdmin”，就会打开phpMyAdmin的管理页面，点击右上方的“权限”
+
+2、修改phpMyAdmin与MySQL通讯的密码(mysql密码要与phpMyAdmin对应，不然登不进去)
+   操作：打开wampserver安装目录，然后依次打开\wamp\apps\phpmyadmin3.3.9，用记事本或者DW软件打开里面的config.inc.php，找到“$cfg['Servers'][$i]['password'] = '';”，在最后的两个单引号里面输入刚才修改的那个密码，然后保存
+
+3、给MySQL数据库创建一个用户以及用户对应的数据库(这一步迟些做也可以，具体用户建网站再建也一样)
+
+三、Apache的配置
+1、设置外网访问配置好的wampserver服务器(默认只允许本机访问)   
+   操作：依次点击W图标—Apache—httpd.conf，找到如图所示的地方，大概在第234行，把“Deny from all”删掉，再把“Allow from 127.0.0.1”改成“Allow from all”，就可以了。
+   似乎版本太新，自动配置好了..没有再配吧
+
+2、继续搜索，找到如图所示的两个地方（分别在大约第190行和第225行），分别把“AllowOverride None”改成“AllowOverride All”（这一步操作是针对使用了URL重写功能的朋友，如果没有用到的话这步建议不要做修改，因为改了这个之后Apache的安全性会略微有所下降。）
+
+3、开启URL重写功能，当然咯，如果大家觉得URL重写功能没有必要的话，这个可以直接无视，但是如果开了的话，上面的第二条就必须做一下了，否则很容易造成错误。按照上面的方法打开httpd.conf文件，找到#LoadModule rewrite_module modules/mod_rewrite.so，然后把前面的“#”删掉，就可以了，当然咯，如果想要这个修改生效的话，还需要立即重启一下apache服务。
+   注：已经默认开了...
+
+4、相信大家还记得上面更改wampserver的“www 目录”指向路径的方法吧？
+
+我曾经说这个方法只是改了wamp中“www 目录”这个链接而已，那如果要真正修改，我们应该怎么改呢？很简单，打开httpd.conf，寻找“DocumentRoot”大概在第178行，把后面的值改成我们实际网站需要的路径，再寻找“<Directory "c:/wamp/www/">”，同样把后面的值改成我们网站存放的实际地址，就OK了。
+
+四、配置PHP 
+PHP的配置比较简单，只需要进行一些基本设置的修改就可以了，依次点击—PHP—php.ini，找到这三个地方：
+short_open_tag = Off（是否允许使用 PHP 代码开始标志的缩写形式（<? ?> ）。）；
+
+memory_limit = 128M（最大使用内存的大小）；
+
+upload_max_filesize = 2M（上传附件的最大值），
+
+第一个需要改成on，否则的话很多php程序都会运行不了，后面的两项就按照大家的实际需求更改就行了。
+   注：同样似乎因为版本较新的原因自动配置好了...
+
+链接https://jingyan.baidu.com/article/c74d6000bb70110f6a595d8d.html

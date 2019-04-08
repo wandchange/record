@@ -1,0 +1,4 @@
+打开fiddler，“Tools--Fiddler Options--HTTPS”，
+然后把下图中同样的地方勾上（注意一致），
+然后点击actions，然后先点击Trust Root…，======  重点是这个，其他按网上步骤即可
+然后，再点击Export Root

@@ -1,0 +1,15 @@
+Font Awesome 是一套绝佳的图标字体库和CSS框架。
+
+Font Awesome 字体为您提供可缩放矢量图标,它可以被定制大小、颜色、阴影以及任何可以用CSS的样式。
+
+要使用Font Awesome图标，请在HTML页面的 部分中添加以下行：
+
+1、国内推荐 CDN：
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+2、海外推荐 CDN
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+详细使用方法
+http://www.runoob.com/font-awesome/fontawesome-tutorial.html

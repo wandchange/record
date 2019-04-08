@@ -1,0 +1,36 @@
+.navbar-sider a{
+    padding-top:8px;
+    padding-bottom:8px;
+    border:hidden;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    line-height: 20px;
+    color: #444;
+}
+
+.main {
+    margin: 70px 30px 30px 30px;
+    font-size: 16px;
+}
+
+.navbar-sider {
+    margin-left: -20px;
+    border: hidden;
+    border-right: 1px solid grey;
+}
+
+.catalog{
+    margin-top: -20px;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+p.chapter-title {
+    font-weight: 400;
+    font-size: 24px;
+}
+
+hr {
+    margin: 5px auto;
+}
+

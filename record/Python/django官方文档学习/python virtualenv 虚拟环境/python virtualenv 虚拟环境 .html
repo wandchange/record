@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://www.liujiangblog.com/course/python/6?c=811 -->
+<html lang="en"><!--百度统计--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./python virtualenv 虚拟环境 _files/hm.js.下载"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b94bd2699a7baf9292dd9cf571f7fbb9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Python,Django,Python教程,Django教程,教程,基础教程,Web开发,运维,自动化,博客,编程,软件,云计算,大数据,爬虫,
+    人工智能,机器学习,神经网络">
+    <meta name="description" content="提供Python和Django的原创中文精品教程和博客,分享技术知识,传播新闻视点,提倡开源精神,让更多开发者从中受益。">
+    <meta name="author" content="刘江,liujiang,大江东流">
+    <title>
+    
+    python virtualenv 虚拟环境 - 刘江的python教程
+    
+</title>
+	
+	<!-- core CSS -->
+    <link href="./python virtualenv 虚拟环境 _files/bootstrap.min.css" rel="stylesheet">
+    <link href="./python virtualenv 虚拟环境 _files/font-awesome.min.css" rel="stylesheet">
+
+
+    <link href="./python virtualenv 虚拟环境 _files/main.css" rel="stylesheet">
+
+    <link href="./python virtualenv 虚拟环境 _files/github.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="http://www.liujiangblog.com/static/images/ico/favicon.ico">
+    
+    <link href="./python virtualenv 虚拟环境 _files/course.css" rel="stylesheet">
+
+
+<style type="text/css" adt="123"></style><script>//console.log('a')
+</script><script>//remove 17173 video ad
+doAdblock();
+function doAdblock(){
+    (function() {
+        function A() {}
+        A.prototype = {
+            rules: {
+                '17173_in':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFile(Customer)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_in_20150522.swf"
+                },
+                '17173_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFileFirstpage\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_out_20150522.swf"
+                },
+                '17173_live':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream(_firstpage)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_stream_20150522.swf"
+                },
+                '17173_live_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream_(custom)?Out\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173.out.Live.swf"
+                }
+            },
+            _done: null,
+            get done() {
+                if(!this._done) {
+                    this._done = new Array();
+                }
+                return this._done;
+            },
+            addAnimations: function() {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = 'object,embed{\
+                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;\
+                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;\
+                -o-animation-duration:.001s;-o-animation-name:playerInserted;\
+                animation-duration:.001s;animation-name:playerInserted;}\
+                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}';
+                document.getElementsByTagName('head')[0].appendChild(style);
+            },
+            animationsHandler: function(e) {
+                if(e.animationName === 'playerInserted') {
+                    this.replace(e.target);
+                }
+            },
+            replace: function(elem) {
+                if(this.done.indexOf(elem) != -1) return;
+                this.done.push(elem);
+                var player = elem.data || elem.src;
+                if(!player) return;
+                var i, find, replace = false;
+                for(i in this.rules) {
+                    find = this.rules[i]['find'];
+                    if(find.test(player)) {
+                        replace = this.rules[i]['replace'];
+                        if('function' === typeof this.rules[i]['preHandle']) {
+                            this.rules[i]['preHandle'].bind(this, elem, find, replace, player)();
+                        }else{
+                            this.reallyReplace.bind(this, elem, find, replace)();
+                        }
+                        break;
+                    }
+                }
+            },
+            reallyReplace: function(elem, find, replace) {
+                elem.data && (elem.data = elem.data.replace(find, replace)) || elem.src && ((elem.src = elem.src.replace(find, replace)) && (elem.style.display = 'block'));
+                var b = elem.querySelector("param[name='movie']");
+                this.reloadPlugin(elem);
+            },
+            reloadPlugin: function(elem) {
+                var nextSibling = elem.nextSibling;
+                var parentNode = elem.parentNode;
+                parentNode.removeChild(elem);
+                var newElem = elem.cloneNode(true);
+                this.done.push(newElem);
+                if(nextSibling) {
+                    parentNode.insertBefore(newElem, nextSibling);
+                } else {
+                    parentNode.appendChild(newElem);
+                }
+            },
+            init: function() {
+                var handler = this.animationsHandler.bind(this);
+                document.body.addEventListener('webkitAnimationStart', handler, false);
+                document.body.addEventListener('msAnimationStart', handler, false);
+                document.body.addEventListener('oAnimationStart', handler, false);
+                document.body.addEventListener('animationstart', handler, false);
+                this.addAnimations();
+            }
+        };
+        new A().init();
+    })();
+}
+//remove baidu search ad
+if(document.URL.indexOf('www.baidu.com') >= 0){
+    if(document && document.getElementsByTagName && document.getElementById && document.body){
+        var aa = function(){
+            var all = document.body.querySelectorAll("#content_left div,#content_left table");
+            for(var i = 0; i < all.length; i++){
+                if(/display:\s?(table|block)\s!important/.test(all[i].getAttribute("style"))){all[i].style.display= "none";all[i].style.visibility='hidden';}
+            }
+            all = document.body.querySelectorAll('.result.c-container[id="1"]');
+            //if(all.length == 1) return;
+            for(var i = 0; i < all.length; i++){
+                if(all[i].innerHTML && all[i].innerHTML.indexOf('广告')>-1){
+                    all[i].style.display= "none";all[i].style.visibility='hidden';
+                }
+            }
+        }
+        aa();
+        document.getElementById('wrapper_wrapper').addEventListener('DOMSubtreeModified',aa)
+    };
+}
+//remove sohu video ad
+if (document.URL.indexOf("tv.sohu.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//remove 56.com video ad
+if (document.URL.indexOf("56.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//fore iqiyi enable html5 player function
+if (document.URL.indexOf("iqiyi.com") >= 0){
+    if (document.cookie.indexOf("player_forcedType=h5_VOD")==-1){
+        document.cookie='player_forcedType=h5_VOD'
+        if(localStorage.reloadTime && Date.now() - parseInt(localStorage.reloadTime)<60000){
+            console.log('no reload')
+        }else{
+            location.reload()
+            localStorage.reloadTime = Date.now();
+        }
+    }
+}
+</script><style type="text/css">object,embed{                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;                -o-animation-duration:.001s;-o-animation-name:playerInserted;                animation-duration:.001s;animation-name:playerInserted;}                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style></head><!--/head-->
+
+<body class="homepage" style="">
+
+    <header id="header" class=" navbar-fixed-top">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<nav class="navbar navbar-default navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://www.liujiangblog.com/">刘江的博客及教程</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="my-navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="http://www.liujiangblog.com/news/">新闻</a></li>
+        <li><a href="http://www.liujiangblog.com/blog/">博客</a></li>
+        <li><a href="http://www.liujiangblog.com/course/python/1">Python教程</a></li>
+        <li><a href="http://www.liujiangblog.com/course/django/2">Django教程</a></li>
+        <li><a href="http://www.liujiangblog.com/video/">视频教程</a>
+        <span class="badge" style="color: red;text-shadow:-1px 0 white,0 1px white,1px 0 white,0 -1px white; float: right;font-size: small;margin-left: -8px;">Hot!</span>
+        </li>
+      </ul>
+
+
+
+
+
+
+
+
+      <ul class="nav navbar-nav navbar-right">
+          <li>
+            
+            缘起缘灭75916<a href="http://www.liujiangblog.com/logout?next=/course/python/6"><span class="glyphicon glyphicon-log-out"></span>注销</a></li>
+            
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    </header><!--/header-->
+
+
+    
+    <div class="container-fluid main">
+      <div class="row">
+
+        <!-- 左侧目录栏 -->
+        <div class="col-md-3">
+          <div class="navbar-sider list-group-item">
+            目&nbsp;录
+            <hr>
+            
+                
+                        
+                            
+                            <a href="http://www.liujiangblog.com/course/python/1" class="list-group-item"><b>Python教程</b></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/3" class="list-group-item"><strong>Python简介</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/4" class="list-group-item"><strong>Python环境搭建</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/5" class="list-group-item">pip的安装和使用</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/6" class="list-group-item active">virtualenv 虚拟环境</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/7" class="list-group-item">代码编辑器</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/8" class="list-group-item">帮助文档</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/9" class="list-group-item"><strong>编译器与解释器</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/10" class="list-group-item"><strong>“Hello World！”</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/11" class="list-group-item"><strong>基础知识</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/12" class="list-group-item">基础语法</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/13" class="list-group-item">变量与常量</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/14" class="list-group-item">运算符</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/15" class="list-group-item">输入输出</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/16" class="list-group-item"><strong>数据类型</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/17" class="list-group-item">数字类型</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/18" class="list-group-item">布尔类型</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/19" class="list-group-item">列表</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/20" class="list-group-item">元组</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/21" class="list-group-item">字符串</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/22" class="list-group-item">字典</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/23" class="list-group-item">bytes</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/24" class="list-group-item">集合set</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/25" class="list-group-item"><strong>流程控制</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/26" class="list-group-item">顺序执行</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/27" class="list-group-item">条件判断</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/28" class="list-group-item">循环控制</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/29" class="list-group-item"><strong>函数</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/30" class="list-group-item">函数基础</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/31" class="list-group-item">参数类型</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/32" class="list-group-item">变量作用域</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/33" class="list-group-item">range()函数</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/34" class="list-group-item">递归函数</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/35" class="list-group-item">匿名函数</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/36" class="list-group-item">推导式</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/37" class="list-group-item">迭代器</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/38" class="list-group-item">生成器</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/39" class="list-group-item">装饰器</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/40" class="list-group-item"><strong>内置函数</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/41" class="list-group-item"><strong>文件读写</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/42" class="list-group-item"><strong>面向对象编程</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/43" class="list-group-item">类和实例</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/44" class="list-group-item">封装、继承和多态</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/45" class="list-group-item">成员保护和访问限制</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/46" class="list-group-item">@property装饰器</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/47" class="list-group-item">特殊成员和魔法方法</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/48" class="list-group-item">reflect反射</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/49" class="list-group-item"><strong>异常处理</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/50" class="list-group-item"><strong>调试和测试</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/51" class="list-group-item"><strong>模块与包</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/52" class="list-group-item"><strong>常用标准库</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/53" class="list-group-item">os</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/54" class="list-group-item">sys</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/55" class="list-group-item">subprocess</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/56" class="list-group-item">random</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/57" class="list-group-item">bisect</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/58" class="list-group-item">hashlib</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/59" class="list-group-item">queue</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/60" class="list-group-item">fileinput</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/61" class="list-group-item">shutil</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/62" class="list-group-item">zipfile</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/63" class="list-group-item">tarfile</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/64" class="list-group-item">getpass</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/65" class="list-group-item">json</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/66" class="list-group-item">pickle</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/67" class="list-group-item">shelve</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/68" class="list-group-item">time</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/69" class="list-group-item">datetime</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/70" class="list-group-item">timeit</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/71" class="list-group-item">logging</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/72" class="list-group-item"><strong>正则表达式</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/73" class="list-group-item">正则表达式语法</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/74" class="list-group-item">re模块</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/75" class="list-group-item"><strong>网络编程</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/76" class="list-group-item">socket编程</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/77" class="list-group-item">socketserver编程</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/78" class="list-group-item"><strong>多线程与多进程</strong></a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/79" class="list-group-item">多线程threading</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/80" class="list-group-item">生产者消费者模式</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/81" class="list-group-item">线程池</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 4em" href="http://www.liujiangblog.com/course/python/82" class="list-group-item">多进程multiprocess</a>
+                            
+                        
+                
+            
+                
+                        
+                            
+                            <a style="margin-left: 2em" href="http://www.liujiangblog.com/course/python/83" class="list-group-item"><strong>协程与异步IO</strong></a>
+                            
+                        
+                
+            
+          </div>
+        </div>
+        <!-- 左侧目录栏 结束 -->
+
+        <!-- 右侧正文栏 -->
+        <div class="col-md-9">
+            <!-- 教程正文主体部分 -->
+            <div class="row">
+                <h1>virtualenv 虚拟环境</h1>
+                <p>阅读:&nbsp;9270</p>
+                <hr>
+                <p>有的时候因为各种原因，在操作系统下，我们会安装很多版本的Python解释器。同样，我们也有可能因为各种原因，需要不同版本的模块，比如Django1.8，Django1.11。再加上pip工具管理器的版本混乱问题。这就使得很多人在Python的环境管理上产生极大的混乱。</p>
+<p>通常每个项目，甚至项目不同阶段的版本，需要不同的Python解释器和依赖库。为了清晰明了，安全可靠的管理这些环境，需要为每个项目或每个应用各自建立一套“独立、隔离”的Python运行环境。</p>
+<p><strong>virtualenv</strong>就是用来为每一个项目创建一套“独立隔离”的Python运行环境的工具。</p>
+<p>在Python3.4之前，virtualenv需要独立手动安装后，方可执行。之后的版本中，Python自带了一个venv库，执行Python –m venv就可以达到与virtalenv同样的效果。更多的用户习惯上还是使用virtualenv的方式。</p>
+<p>Python多解释器环境加上virtualenv创建的多虚拟环境共存在同一操作系统下的情形一般如下图所示：</p>
+<p><img alt="image.png-49.5kB" src="./python virtualenv 虚拟环境 _files/image.png" class="img-responsive"></p>
+<p>核心要点是：</p>
+<ul>
+<li>一个操作系统下，可以有多个“操作系统级别的”Python解释器；</li>
+<li>每个Python解释器有一个指向自己的pip工具，两者一一对应；</li>
+<li>通过virtualenv可以虚拟任何一个“操作系统级别的”Python解释器成为一个“虚拟级别”的解释器；</li>
+<li>每个“虚拟级别”的解释器又拥有自己独立的pip工具和site-packages。</li>
+</ul>
+<p>如果你理解了上面几点，就能明白virtualenv和pip在使用上的区别。</p>
+<h2 id="virtualenv">安装virtualenv</h2>
+<p>以windows操作系统为例，要安装virtualenv，建议直接使用当前环境变量下指定的pip，也就是你操作系统默认的那个python版本所绑定的pip，这样方便命令调用。通常如下：</p>
+<p><code>pip install virtualenv</code></p>
+<p>可以在命令行界面中验证安装：<code>where virtualenv</code></p>
+<p><img alt="image.png-64.5kB" src="./python virtualenv 虚拟环境 _files/image(1).png" class="img-responsive"></p>
+<p>可以看出，这里的virtualenv是作为一个可执行程序，安装在我系统默认的Python36版本下。而我当前操作系统下其实有3个版本的Python：</p>
+<p><img alt="image.png-57.4kB" src="./python virtualenv 虚拟环境 _files/image(2).png" class="img-responsive"></p>
+<p>你或许有疑问？那我要虚拟Python2.7的版本怎么办？在2.7下也装一个virtualenv？不需要的！virtualenv可以指定虚拟的Python解释器版本，只要你本地操作系统下安装了这个版本！</p>
+<h2 id="_1">建立虚拟环境</h2>
+<p>如果自己手动管理所有的虚拟环境，通常会建立一个目录，用来放置所有的虚拟环境。这里：<code>mkdir d:\Python_virtualenvs</code>,然后运行：
+<code>virtualenv –p c:\Python27\Python2.exe –-no-site-packages d:\Python_virtualenvs\for_django</code></p>
+<p><img alt="image.png-112.8kB" src="./python virtualenv 虚拟环境 _files/image(3).png" class="img-responsive"></p>
+<p><strong>-p</strong>： 指定你要虚拟的Python版本，这里选择了本地的python2.7</p>
+<p><strong>–-no-site-packages</strong>：表示在建立虚拟环境时不将原版本中的第三方库拷贝过来，这样就能获得一个纯净的Python环境。</p>
+<p><strong>d:\Python_virtualenvs\for_django</strong>：表明在该目录下，建立一个叫做for_django的虚拟环境，这样的命名方式，让你一眼就能看出这个虚拟环境是为谁建立的。</p>
+<p>我们看一眼文件系统中的情况，从截图中可以看出，环境非常干净！</p>
+<p><img alt="image.png-64.9kB" src="./python virtualenv 虚拟环境 _files/image(4).png" class="img-responsive">
+<img alt="image.png-78.9kB" src="./python virtualenv 虚拟环境 _files/image(5).png" class="img-responsive"></p>
+<h2 id="_2">使用虚拟环境</h2>
+<p>命令行下，进入你要使用的虚拟环境的目录下的script文件夹，运行<code>activate</code>命令。或者使用绝对路径的方式调用该命令。</p>
+<p><img alt="image.png-212.2kB" src="./python virtualenv 虚拟环境 _files/image(6).png" class="img-responsive"></p>
+<p>注意命令提示符（for_django），它表示你当前在for_django这个虚拟环境内。现在，你可以当做一个正常的Python环境使用。例如运行python命令，又或者使用pip安装第三方库pip install requests。这些都被限制和绑定在for_django这个虚拟环境内，不会对操作系统下本地的Python版本和其它的虚拟环境产生任何的影响！</p>
+<p><img alt="image.png-175.8kB" src="./python virtualenv 虚拟环境 _files/image(7).png" class="img-responsive"></p>
+<h2 id="_3">退出虚拟环境</h2>
+<p>要退出虚拟环境，只要运行script目录下的<code>deactivate</code>命令就可以了。</p>
+<p>要删除虚拟环境，直接删除虚拟环境所在的目录就可以了，注意不要将其它的环境给删了。但是，删除虚拟环境后，所有以前使用该环境的工程都将受到影响。这点很好理解，所以请确保环境不再有需要再删除！</p>
+<h2 id="linux">linux操作系统下的使用</h2>
+<p>对于linux操作系统，使用方法基本类似。只是虚拟环境中的文件路径和脚本调用的方式和windows系统下不太一样，仔细看下图中的bin目录，提供了一个activate脚本，以及一个写入环境变量的deactivate命令。</p>
+<p><img alt="image.png-38.7kB" src="./python virtualenv 虚拟环境 _files/image(8).png" class="img-responsive"></p>
+<p><img alt="image.png-45.5kB" src="./python virtualenv 虚拟环境 _files/image(9).png" class="img-responsive"></p>
+<p>创建虚拟环境：
+$ virtualenv -p /usr/bin/python2.7 –-no-site-packages my_venv</p>
+<p>启动虚拟环境：
+$ source my_venv/bin/activate　</p>
+<p>退出虚拟环境：
+$ deactivate　</p>
+<p>删除虚拟环境：
+$ rm –r my_venv</p>
+<h2 id="pycharmvirtualenv">Pycharm结合virtualenv的使用</h2>
+<p>windows下的开发，很多时候使用命令行并不是那么方便，尤其是在Pycharm开发环境下，频繁切换界面也是种负担。实际上Pycharm可以指定解释器，直接将项目的Python解释器设置为你要使用的虚拟环境就行，如下所示：</p>
+<p>在settings中：</p>
+<p><img alt="image.png-111.9kB" src="./python virtualenv 虚拟环境 _files/image(10).png" class="img-responsive"></p>
+<p>选择Python:
+<img alt="image.png-111.4kB" src="./python virtualenv 虚拟环境 _files/image(11).png" class="img-responsive"></p>
+<h2 id="virtualenvpip">virtualenv配合pip快速建立开发环境</h2>
+<p>virtualenv虚拟环境配合pip的freeze功能，可以一次性快捷的将整个环境下的第三方模块全部记录下来：
+<code>pip freeze &gt; d:\requirements.txt</code>
+<img alt="image.png-48.6kB" src="./python virtualenv 虚拟环境 _files/image(12).png" class="img-responsive"></p>
+<p>对应的，也可以用它一次性通过在别的机器上或虚拟环境里，将文件里列出的第三方库安装起来。只需要使用命令：<code>pip install -r requirements.txt</code></p>
+            </div>
+            <!-- 教程正文主体部分结束 -->
+
+            <hr>
+
+
+            <!-- 打赏部分开始 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- 打赏部分结束 -->
+
+
+            <!-- 教程导航条 -->
+            <div class="row">
+                
+                    <a class="pull-left" href="http://www.liujiangblog.com/course/python/5">
+                        <i class="glyphicon glyphicon-chevron-left"></i>pip的安装和使用</a>
+                
+
+                
+                    <a class="pull-right" href="http://www.liujiangblog.com/course/python/7">
+                        代码编辑器<i class="glyphicon glyphicon-chevron-right"></i></a>
+                
+            </div>
+            <!-- 教程导航条结束 -->
+
+
+            <hr>
+
+            <!-- 评论区-->
+            
+
+            <!-- 显示评论条数-->
+            <div class="row">
+                
+                <h3>评论总数：  4</h3>
+                <hr>
+            </div>
+
+            <!-- 评论表单区-->
+            <div class="row">
+                
+                
+                <form class="form-horizontal" action="http://www.liujiangblog.com/comments/post/" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="dmYjmG58XRD7427XV4EWlTSn76CANC9ObxuBuHrRuFEcNbAly8WZYM25jKavqw3v">
+                        <label for="input_title" class="pull-left control-label">评论标题:</label>
+                        <div class="col-sm-6">
+                        <input class="form-control" name="comment_title" id="input_title" placeholder="请输入标题" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_comment" class="pull-left control-label">评论内容:</label>
+                        <div class="col-sm-6">
+                        <textarea style="resize:none;" class="form-control" rows="6" name="comment" id="input_comment" placeholder="在此输入评论" required=""></textarea>
+                        </div>
+                    </div>
+                    <span style="display: none;"><input type="text" name="honeypot" id="id_honeypot"></span>
+                    <input type="hidden" name="content_type" value="course.post" id="id_content_type">
+                    <input type="hidden" name="object_pk" value="6" id="id_object_pk">
+                    <input type="hidden" name="timestamp" value="1540945306" id="id_timestamp">
+                    <input type="hidden" name="security_hash" value="32fab0846b5724bc7cb19db82ea7c10eebee83d9" id="id_security_hash">
+                    <input type="hidden" name="next" value="/course/python/6">
+                    <input name="parent_id" type="hidden" value="-1">
+                    <input name="level" type="hidden" value="0">
+                    <div class="form-group col-sm-7">
+                        <div class="pull-left" style="margin-left: 68px;">
+                            <button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;重置</button>
+                        </div>
+                        <div class="pull-right" style="margin-right: 12px;">
+                            <button type="submit" class="btn btn-success" id="id_submit"><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;评论</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            <!-- 评论表单区结束-->
+
+            <hr>
+
+            <!-- 评论显示区-->
+            <div class="row">
+                
+                    <div class="single_comments" style="margin-left: 0em">
+                        <div>
+                            <img src="./python virtualenv 虚拟环境 _files/005Zo8ISjw8epfwt0oq8uj302s02s3yd.jpg" alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;" class="img-responsive">
+                        </div>
+                        <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+                                    <strong>Anaconda不能下载？</strong>
+                                    <div class="entry-meta small muted">
+                                        
+                                            <span>By&nbsp;&nbsp;
+                                                
+                                                    缘起缘灭75916
+                                                
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+                                        
+                                        <em>2018年10月30日 17:08</em>
+                                        <a href="http://www.liujiangblog.com/reply/811">&nbsp;&nbsp;回复</a>
+                                    </div>
+                            <br>
+                            <p>Could not find a version that satisfies the requirement anaconda-client==
+ (from -r requirements.txt (line 2)) (from versions: 1.1.1, 1.2.2)
+No matching distribution found for anaconda-client==1.6.9 (from -r requirem
+txt (line 2))</p>
+                        </div>
+                    </div>
+                
+                    <div class="single_comments" style="margin-left: 0em">
+                        <div>
+                            <img src="./python virtualenv 虚拟环境 _files/005zpa13ly8fujgzewe7kj30e80e874n.jpg" alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;" class="img-responsive">
+                        </div>
+                        <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+                                    <strong>virtualenv</strong>
+                                    <div class="entry-meta small muted">
+                                        
+                                            <span>By&nbsp;&nbsp;
+                                                
+                                                    候期不遇
+                                                
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+                                        
+                                        <em>2018年9月12日 16:59</em>
+                                        <a href="http://www.liujiangblog.com/reply/726">&nbsp;&nbsp;回复</a>
+                                    </div>
+                            <br>
+                            <p>为啥我每次创建新的虚拟环境，总是加载很长时间？</p>
+                        </div>
+                    </div>
+                
+                    <div class="single_comments" style="margin-left: 0em">
+                        <div>
+                            <img src="./python virtualenv 虚拟环境 _files/aa7e4bfejw8e7ffi6g8e1j20b40godga.jpg" alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;" class="img-responsive">
+                        </div>
+                        <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+                                    <strong>virtualenvwrapper更方便一些</strong>
+                                    <div class="entry-meta small muted">
+                                        
+                                            <span>By&nbsp;&nbsp;
+                                                
+                                                    唯J王道
+                                                
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+                                        
+                                        <em>2018年4月18日 20:02</em>
+                                        <a href="http://www.liujiangblog.com/reply/395">&nbsp;&nbsp;回复</a>
+                                    </div>
+                            <br>
+                            <p>感觉使用virtualenvwrapper更方便一些</p>
+                        </div>
+                    </div>
+                
+                    <div class="single_comments" style="margin-left: 0em">
+                        <div>
+                            <img src="./python virtualenv 虚拟环境 _files/8fbee390jw8fb1m9medxjj2050050745.jpg" alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;" class="img-responsive">
+                        </div>
+                        <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+                                    <strong>virtualenv</strong>
+                                    <div class="entry-meta small muted">
+                                        
+                                            <span>By&nbsp;&nbsp;
+                                                
+                                                    双鱼开阳
+                                                
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+                                        
+                                        <em>2018年2月2日 16:33</em>
+                                        <a href="http://www.liujiangblog.com/reply/185">&nbsp;&nbsp;回复</a>
+                                    </div>
+                            <br>
+                            <p>说的很详细，虚拟环境很好用！</p>
+                        </div>
+                    </div>
+                
+            </div>
+            <!-- 评论显示区结束-->
+
+            <!-- 评论区结束-->
+
+        </div>
+        <!-- 右侧正文栏结束 -->
+
+      </div>
+    </div>
+
+
+
+
+    <div id="back-to-top">
+        <span class="glyphicon glyphicon-arrow-up"></span>
+    </div>
+
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container-fluid" style="font-size: smaller">
+            <div class="row footer-1">
+                <div class="col-md-2">
+                    Copyright © 2018.刘江的官方网站
+                </div>
+                <div class="col-md-3">
+                    托管于<a target="_blank" href="https://www.aliyun.com/">阿里云</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备17055098号</a>
+                </div>
+                <div class="col-md-2">
+                    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010602120033">
+
+                        <span><img style="display: inline;margin: 0 auto;" src="./python virtualenv 虚拟环境 _files/ghs.png" class="img-responsive">京公网安备11010102002019号</span>
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <ul class="pull-right">
+                        <li><a href="http://www.liujiangblog.com/blog/">返回首页</a></li>
+                        <li><a href="http://www.liujiangblog.com/about/">关于博主</a></li>
+                        <li><a href="http://www.liujiangblog.com/course/python/6?c=811#">常见问题</a></li>
+                        <li><a href="http://www.liujiangblog.com/contact/" target="_blank">广告合作</a></li>
+                        <li><a href="http://www.liujiangblog.com/contact/" target="_blank">联系方式</a></li>
+                        <li><a href="http://www.liujiangblog.com/course/python/6?c=811#">使用许可</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </footer><!--/#footer-->
+
+    <script src="./python virtualenv 虚拟环境 _files/jquery.js.下载"></script>
+    <script src="./python virtualenv 虚拟环境 _files/bootstrap.min.js.下载"></script>
+
+
+
+
+    <script>
+
+
+        //为新闻添加访问量
+        function count_visiting(news_id){
+            var to_url = "/news/visiting/"+news_id;
+            jQuery.get(to_url);
+        }
+
+
+        $("#donate").click(function () {
+            $("#donate_page").toggleClass('hidden');
+        });
+
+
+
+        <!-- 导航条对应条目active -->
+        $(document).ready(function () {
+
+            $('.navbar-nav').find('a').each(function () {
+                if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
+                    $(this).parent().addClass('active'); // this.parent.className = 'active';
+                }
+            });
+
+            $('table').addClass('table table-bordered table-hover');
+
+            $('img').addClass('img-responsive');
+
+            $('#back-to-top').click(function () {
+                window.scrollTo(0,0);
+            });
+
+        });
+
+    
+
+        $('button.navbar-toggle').click(function () {
+            $('#my-navbar').css("background","#337ab7")
+        });
+        
+    </script>
+
+
+
+</body></html>
