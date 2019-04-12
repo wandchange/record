@@ -1,0 +1,6 @@
+D:\wampserver\wamp64\www\git_learn\another\learngit>git push origin dev
+error: src refspec dev does not match any.
+error: failed to push some refs to 'git@github.com:wandchange/learngit.gi
+
+
+可能是没切换到对应的分支，注意push哪个分支就要切换到那个分支才行
