@@ -1,0 +1,3 @@
+测试apache 提示 Your port 80 is not actually used.时
+有可能是安装wampserver没有给予apache联网权限
+左键点击w图标，apache  administrator -> service -> install service 重装一下
